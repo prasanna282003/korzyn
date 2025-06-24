@@ -772,7 +772,7 @@
         <div class="nav-links" id="navLinks">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="services.html" class="active">Services</a>
+            <a href="services.html">Services</a>
             <a href="projects.html">Projects</a>
         </div>
         
@@ -1007,7 +1007,7 @@
         </div>
     </footer>
 
-    <script>
+   <script>
     // HAMBURGER MENU TOGGLE
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
@@ -1016,67 +1016,75 @@
         navLinks.classList.toggle('active');
     });
 
-    // SET ACTIVE LINK FOR SERVICES PAGE ONLY
-    document.addEventListener('DOMContentLoaded', function () {
+    // SMART NAVIGATION HIGHLIGHTING (WORKS ON NETLIFY)
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPath = window.location.pathname.toLowerCase();
         const navItems = document.querySelectorAll('.nav-links a');
-
+        
         navItems.forEach(item => {
             const itemPath = item.getAttribute('href').toLowerCase();
-
-            // Only highlight services link
-            if (itemPath === 'services.html') {
+            
+            // Remove all active classes first
+            item.classList.remove('active');
+            
+            // Highlight services link for:
+            // /services.html, /services/, /services, etc.
+            if (currentPath.includes('services') && itemPath.includes('services')) {
                 item.classList.add('active');
-            } else {
-                item.classList.remove('active');
             }
         });
     });
 
-    // SCROLL ANIMATIONS FOR SERVICE SECTIONS
+    // ENHANCED SCROLL ANIMATIONS
     const animateOnScroll = () => {
-        const serviceDetails = document.querySelectorAll('.service-detail');
-        const benefitCards = document.querySelectorAll('.benefit-card');
+        const animatedElements = [
+            ...document.querySelectorAll('.service-detail'),
+            ...document.querySelectorAll('.benefit-card'),
+            ...document.querySelectorAll('.section-header') // Add other elements as needed
+        ];
 
-        serviceDetails.forEach(element => {
+        animatedElements.forEach(element => {
             const elementPosition = element.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.2;
-
-            if (elementPosition < screenPosition) {
-                element.classList.add('visible');
-            }
-        });
-
-        benefitCards.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.2;
-
+            const screenPosition = window.innerHeight / 1.3;
+            
             if (elementPosition < screenPosition) {
                 element.classList.add('visible');
             }
         });
     };
 
+    // Initialize elements with transition
+    document.querySelectorAll('.service-detail, .benefit-card').forEach(el => {
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+
+    // Run animations on load and scroll
     window.addEventListener('load', animateOnScroll);
     window.addEventListener('scroll', animateOnScroll);
 
-    // SMOOTH SCROLLING FOR ANCHOR LINKS
+    // IMPROVED SMOOTH SCROLLING
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
-
             const targetId = this.getAttribute('href');
+            
             if (targetId === '#') return;
-
+            
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                const offset = 100; // Adjust for fixed header height
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                
                 window.scrollTo({
-                    top: targetElement.offsetTop - 100, // adjust if header is fixed
+                    top: targetPosition - offset,
                     behavior: 'smooth'
                 });
+                
+                // Update URL without jumping
+                history.pushState(null, null, targetId);
             }
         });
     });
 </script>
-
 </body>
 </html>
