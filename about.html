@@ -832,9 +832,12 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    let current = location.pathname.split("/").pop() || "index.html";
+    let current = location.pathname.split("/").pop().toLowerCase();
+    if (current === "") current = "index.html";
+
     document.querySelectorAll(".nav-links a").forEach(link => {
-        if (link.getAttribute("href") === current) {
+        const linkHref = link.getAttribute("href").toLowerCase();
+        if (linkHref === current || linkHref === current + ".html" || linkHref.replace(".html", "") === current.replace(".html", "")) {
             link.classList.add("active");
         } else {
             link.classList.remove("active");
