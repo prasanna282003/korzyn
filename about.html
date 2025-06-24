@@ -831,13 +831,13 @@
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    let current = location.pathname.split("/").pop().toLowerCase();
-    if (current === "") current = "index.html";
+document.addEventListener("DOMContentLoaded", function () {
+    let current = window.location.pathname.split("/").pop() || "index.html";
+    current = current.toLowerCase().replace(".html", "");
 
     document.querySelectorAll(".nav-links a").forEach(link => {
-        const linkHref = link.getAttribute("href").toLowerCase();
-        if (linkHref === current || linkHref === current + ".html" || linkHref.replace(".html", "") === current.replace(".html", "")) {
+        const href = link.getAttribute("href").toLowerCase().replace(".html", "");
+        if (href === current) {
             link.classList.add("active");
         } else {
             link.classList.remove("active");
