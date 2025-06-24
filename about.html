@@ -773,47 +773,37 @@
             <p>&copy; 2025 Korzyn Consulting Pvt. Ltd. All Rights Reserved.</p>
         </div>
     </footer>
-   <script>
+   
+<script>
     // HAMBURGER MENU TOGGLE
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
 
-    hamburger.addEventListener('click', () => {
+    hamburger?.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
 
-    // PERFECT NAVIGATION HIGHLIGHTING FOR NETLIFY
-    document.addEventListener('DOMContentLoaded', function () {
-        // Get current path (e.g., /about.html)
-        const currentPath = window.location.pathname.toLowerCase();
-        const navItems = document.querySelectorAll('.nav-links a');
+    // ACTIVE NAV LINK HIGHLIGHTING
+    document.addEventListener("DOMContentLoaded", function () {
+        let currentPath = window.location.pathname.toLowerCase();
+        if (currentPath === "/") currentPath = "/index";
 
-        // Remove all active classes first
-        navItems.forEach(item => item.classList.remove('active'));
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            let href = link.getAttribute("href").toLowerCase().replace(".html", "");
+            if (!href.startsWith("/")) href = "/" + href;
 
-        // Check each link for exact match
-        navItems.forEach(item => {
-            const itemPath = '/' + item.getAttribute('href').toLowerCase();
-
-            if (
-                (currentPath === '/' || currentPath === '/index.html') &&
-                (itemPath === '/index.html' || itemPath === '/')
-            ) {
-                item.classList.add('active');
-            } else if (currentPath === itemPath) {
-                item.classList.add('active');
+            if (href === currentPath) {
+                link.classList.add("active");
             }
         });
     });
 
-    // SCROLL ANIMATIONS (optional)
+    // SCROLL ANIMATIONS
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.value-card, .about-text, .about-image');
-
         elements.forEach(element => {
             const elementPosition = element.getBoundingClientRect().top;
             const screenPosition = window.innerHeight / 1.2;
-
             if (elementPosition < screenPosition) {
                 element.style.opacity = '1';
                 element.style.transform = 'translateY(0)';
@@ -821,7 +811,6 @@
         });
     };
 
-    // Initialize elements for animation
     document.querySelectorAll('.value-card, .about-text, .about-image').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
@@ -831,22 +820,6 @@
     window.addEventListener('scroll', animateOnScroll);
     window.addEventListener('load', animateOnScroll);
 </script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const currentPath = window.location.pathname.toLowerCase();
-    const navLinks = document.querySelectorAll(".nav-links a");
-
-    navLinks.forEach(link => {
-        const href = link.getAttribute("href").toLowerCase();
-        if (href === currentPath || href === "/" && currentPath === "/index") {
-            link.classList.add("active");
-        }
-    });
-});
-</script>
-
-
 
 </body>
 </html>
