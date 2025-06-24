@@ -832,15 +832,11 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    let current = window.location.pathname.split("/").pop() || "index.html";
-    current = current.toLowerCase().replace(".html", "");
-
+    const current = window.location.pathname.split("/").pop().replace(".html", "") || "index";
     document.querySelectorAll(".nav-links a").forEach(link => {
-        const href = link.getAttribute("href").toLowerCase().replace(".html", "");
-        if (href === current) {
+        const linkHref = link.getAttribute("href").replace(".html", "");
+        if (linkHref === current) {
             link.classList.add("active");
-        } else {
-            link.classList.remove("active");
         }
     });
 });
