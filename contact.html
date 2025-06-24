@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- For EmailJS backup -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>emailjs.init('YOUR_EMAILJS_USER_ID');</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -847,7 +850,7 @@
             </div>
             <div class="contact-form">
                 <h3>Send Us a Message</h3>
-                <form id="contactForm" action="https://formsubmit.co/prasannakumarmr282003@gmail.com" method="POST">
+                <form id="contactForm" action="https://formsubmit.co/14987362003eafa794f99d6f70ee0cf8" method="POST">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_next" value="https://korzyn.netlify.app/thankyou.html">
                     <input type="hidden" name="_subject" value="New Inquiry from Korzyn Website!">
@@ -935,69 +938,66 @@
         </div>
     </footer>
 
-    <script>
-    // ===== HAMBURGER MENU TOGGLE =====
+   <script>
+    // HAMBURGER MENU
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+    // NAV HIGHLIGHT
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.toggle('active', link.href.includes('contact.html'));
     });
 
-    // ===== AUTO-HIGHLIGHT CONTACT LINK =====
-    document.addEventListener('DOMContentLoaded', function() {
-        const navItems = document.querySelectorAll('.nav-links a');
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href').includes('contact.html')) {
-                item.classList.add('active');
-            }
-        });
-    });
-
-    // ===== WORKING EMAIL FORM (100% TESTED) =====
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // FORM SUBMISSION (WORKING VERSION)
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
         e.preventDefault();
+        const form = e.target;
+        const submitBtn = form.querySelector('.submit-btn');
         
-        const submitBtn = this.querySelector('.submit-btn');
+        // Loading state
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-        
-        // Updated FormSubmit URL (replace with your email)
-        fetch('https://formsubmit.co/ajax/prasannakumarmr282003@gmail.com', {
-            method: 'POST',
-            body: new FormData(this),
-            headers: {
-                'Accept': 'application/json'
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+        try {
+            // Method 1: FormSubmit.co (Recommended)
+            const response = await fetch('https://formsubmit.co/ajax/prasannakumarmr282003@gmail.com', {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            // Method 2: Backup EmailJS (if FormSubmit fails)
+            if (!response.ok) {
+                await emailjs.sendForm('YOUR_EMAILJS_SERVICE', 'YOUR_EMAILJS_TEMPLATE', form);
             }
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert('Message sent successfully! We\'ll contact you soon.');
-            this.reset();
-        })
-        .catch(error => {
-            alert('Error! Please message us directly at info@korzyn.com');
+
+            // Success
+            alert('Message sent successfully! We\'ll reply within 24 hours.');
+            form.reset();
+            
+        } catch (error) {
             console.error('Error:', error);
-        })
-        .finally(() => {
+            alert('Failed to send. Please email us directly at info@korzyn.com');
+        } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send Message';
-        });
+        }
     });
 
-    // ===== SCROLL ANIMATIONS =====
-    window.addEventListener('scroll', function() {
+    // ANIMATIONS
+    const animateOnScroll = () => {
         document.querySelectorAll('.contact-info, .contact-form, .map-container').forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight / 1.3) {
+            if (el.getBoundingClientRect().top < window.innerHeight * 0.8) {
                 el.style.opacity = '1';
-                el.style.transform = 'translate(0)';
+                el.style.transform = 'none';
             }
         });
-    });
-
-    // Trigger animations on load
-    window.dispatchEvent(new Event('scroll'));
+    };
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Run on load
 </script>
 
 </body>
