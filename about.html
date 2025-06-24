@@ -646,10 +646,12 @@
         </div>
         
         <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="projects.html">Projects</a>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/services">Services</a>
+            <a href="/projects">Projects</a>
+            <a href="/contact">Contact</a>
+
         </div>
         
         <a href="contact.html" class="contact-btn">Contact</a>
@@ -832,21 +834,12 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const current = window.location.pathname.split("/").pop().replace(".html", "") || "index";
-    document.querySelectorAll(".nav-links a").forEach(link => {
-        const linkHref = link.getAttribute("href").replace(".html", "");
-        if (linkHref === current) {
-            link.classList.add("active");
-        }
-    });
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const current = location.pathname.split("/").pop().replace(".html", "") || "index";
-    document.querySelectorAll(".nav-links a").forEach(link => {
-        const href = link.getAttribute("href").replace(".html", "");
-        if (href === current) {
+    const currentPath = window.location.pathname.toLowerCase();
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    navLinks.forEach(link => {
+        const href = link.getAttribute("href").toLowerCase();
+        if (href === currentPath || href === "/" && currentPath === "/index") {
             link.classList.add("active");
         }
     });
