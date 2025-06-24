@@ -220,6 +220,8 @@
             z-index: 1;
             animation: float 8s ease-in-out infinite;
             transform: translateZ(0);
+            max-width:80%; /* Add this to control the maximum width */
+
         }
 
         .hero-image img {
@@ -230,6 +232,8 @@
             transform-style: preserve-3d;
             transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
             transition: transform 0.5s ease;
+            max-height: 100vh; /* Add maximum height if needed */
+            object-fit: contain; /* Ensures the image maintains aspect ratio */
         }
 
         .hero-image:hover img {
@@ -627,7 +631,11 @@
 
             .hero-image {
                 margin-top: 40px;
+                max-width: 100%; /* Full width on mobile */
             }
+             .hero-image img {
+                  max-height: 60vh; /* Adjust height for mobile */
+    }
 
             .about-content {
                 flex-direction: column;
