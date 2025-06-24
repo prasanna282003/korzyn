@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Korzyn Consulting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* RESET & MODERN FONTS */
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary: #f72585;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #4cc9f0;
+            --footer-bg: #0c0c1a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            align-items: center;
+            padding: 20px 8%;
+            background: white;
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-right: 50px;
+        }
+
+        .logo-img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            bottom: -4px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -4px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-btn {
+            background: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-left: auto;
+        }
+
+        .contact-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--dark);
+            margin-left: 20px;
+        }
+
+        /* SERVICE HERO SECTION */
+        .service-hero {
+            padding: 8% 8% 6%;
+            background: linear-gradient(135deg, rgba(67,97,238,0.05) 0%, rgba(248,249,250,1) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 70%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(67,97,238,0.08) 0%, rgba(67,97,238,0) 70%);
+            z-index: 0;
+        }
+
+        .service-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .service-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.2;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .service-hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 32px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .cta-btn {
+            background: var(--primary);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(67, 97, 238, 0.3);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+            background: var(--primary-dark);
+        }
+
+        /* DETAILED SERVICES SECTION */
+        .detailed-services {
+            padding: 6% 8%;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .service-detail {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .service-detail.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-detail:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .service-detail-image {
+            flex: 1;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-detail-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .service-detail-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .service-detail-content {
+            flex: 1;
+        }
+
+        .service-detail-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .service-detail-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .service-features {
+            margin: 25px 0;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .service-features i {
+            color: var(--primary);
+            margin-top: 3px;
+        }
+
+        /* SERVICE BENEFITS SECTION */
+        .service-benefits {
+            padding: 6% 8%;
+            background: linear-gradient(135deg, rgba(248,249,250,1) 0%, rgba(255,255,255,1) 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .benefit-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: rgba(67, 97, 238, 0.1);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 28px;
+            transition: all 0.5s ease;
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+        }
+
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .benefit-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* CTA SECTION */
+        .service-cta {
+            padding: 8% 8%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 70%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+
+        .service-cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .service-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .service-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .light-btn {
+            background: white;
+            color: var(--primary-dark);
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .light-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            padding: 60px 8% 40px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            width: 36px;
+            height: 36px;
+        }
+
+        .footer-logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-heading {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .footer-contact i {
+            margin-top: 3px;
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        /* DELAYED ANIMATIONS */
+        .service-detail:nth-child(1) { transition-delay: 0.1s; }
+        .service-detail:nth-child(2) { transition-delay: 0.2s; }
+        .service-detail:nth-child(3) { transition-delay: 0.3s; }
+        .service-detail:nth-child(4) { transition-delay: 0.4s; }
+        .service-detail:nth-child(5) { transition-delay: 0.5s; }
+        .service-detail:nth-child(6) { transition-delay: 0.6s; }
+
+        .benefit-card:nth-child(1) { transition-delay: 0.1s; }
+        .benefit-card:nth-child(2) { transition-delay: 0.2s; }
+        .benefit-card:nth-child(3) { transition-delay: 0.3s; }
+        .benefit-card:nth-child(4) { transition-delay: 0.4s; }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 1024px) {
+            .service-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .service-detail {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                padding: 30px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .contact-btn {
+                margin-left: 0;
+            }
+
+            .hamburger {
+                display: block;
+                margin-left: auto;
+            }
+
+            .service-hero {
+                padding: 20% 5% 15%;
+            }
+
+            .service-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .service-hero p {
+                font-size: 1rem;
+            }
+
+            .service-detail {
+                flex-direction: column !important;
+                margin-bottom: 60px;
+            }
+
+            .service-detail-image, .service-detail-content {
+                width: 100%;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .service-cta h2 {
+                font-size: 2rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-logo {
+                justify-content: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-heading::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-contact p {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-cta h2 {
+                font-size: 1.8rem;
+            }
+        }
+                /* Add this to your CSS */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Optional: Add some padding to account for fixed navbar */
+        .service-detail {
+            scroll-margin-top: 100px; /* Adjust based on your navbar height */
+        }
+            .nav-links a.active {
+            border-bottom: 2px solid #007bff; /* Add your custom color if needed */
+            color: #007bff;
+        }
+        .nav-links a {
+            transition: border-bottom 0.3s ease, color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo-container">
+            <img src="images/logo.jpg" alt="Korzyn Logo" class="logo-img">
+            <div class="logo-text">Korzyn</div>
+        </div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="projects.html">Projects</a>
+        </div>
+        
+        <a href="contact.html" class="contact-btn">Contact</a>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- SERVICE HERO SECTION -->
+    <section class="service-hero">
+        <div class="service-hero-content">
+            <h1>Comprehensive Technology Services</h1>
+            <p>We deliver cutting-edge solutions that drive digital transformation and business growth. Our services are designed to help you innovate, automate, and scale.</p>
+            <a href="contact.html" class="cta-btn">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- DETAILED SERVICES SECTION -->
+    <section class="detailed-services">
+        <div class="section-header">
+            <h2>Our Expertise</h2>
+            <p>We combine technical excellence with business acumen to deliver solutions that create real impact</p>
+        </div>
+        
+        <div class="service-detail" id="saas-development">
+            <div class="service-detail-image">
+                <img src="images/sas.webp" alt="SaaS Product Development">
+            </div>
+            <div class="service-detail-content">
+                <h3>SaaS Product Development</h3>
+                <p>From concept to deployment, we build scalable, secure, and user-friendly Software-as-a-Service platforms tailored to your business needs. Our full-stack development approach ensures your product is built for growth from day one.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> End-to-end SaaS development lifecycle</li>
+                    <li><i class="fas fa-check-circle"></i> Cloud-native architecture with microservices</li>
+                    <li><i class="fas fa-check-circle"></i> Multi-tenant infrastructure design</li>
+                    <li><i class="fas fa-check-circle"></i> Subscription billing and payment integration</li>
+                    <li><i class="fas fa-check-circle"></i> Continuous integration and deployment</li>
+                </ul>
+                <a href="contact.html" class="cta-btn">Discuss Your Project</a>
+            </div>
+        </div>
+        
+        <div class="service-detail" id="ai-automation">
+            <div class="service-detail-image">
+                <img src="images/ai.jpg" alt="AI-Powered Automation">
+            </div>
+            <div class="service-detail-content">
+                <h3>AI-Powered Automation & Chatbots</h3>
+                <p>Transform your operations with intelligent automation solutions that reduce costs, improve efficiency, and enhance customer experiences. Our AI implementations deliver measurable ROI through process optimization.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Conversational AI and chatbot development</li>
+                    <li><i class="fas fa-check-circle"></i> Workflow automation and RPA solutions</li>
+                    <li><i class="fas fa-check-circle"></i> Natural Language Processing (NLP) integration</li>
+                    <li><i class="fas fa-check-circle"></i> Predictive analytics and decision support</li>
+                    <li><i class="fas fa-check-circle"></i> Continuous learning and improvement</li>
+                </ul>
+                <a href="contact.html" class="cta-btn">Automate Your Business</a>
+            </div>
+        </div>
+        
+        <div class="service-detail" id="crm-solutions">
+            <div class="service-detail-image">
+                <img src="images/crm.jpg" alt="Custom CRM Solutions">
+            </div>
+            <div class="service-detail-content">
+                <h3>Custom CRM & Internal Tools</h3>
+                <p>Break free from one-size-fits-all solutions with CRM systems and business tools designed specifically for your workflows. We build systems that adapt to your processes, not the other way around.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Tailored CRM development and customization</li>
+                    <li><i class="fas fa-check-circle"></i> Sales pipeline and lead management</li>
+                    <li><i class="fas fa-check-circle"></i> Customer data analytics and reporting</li>
+                    <li><i class="fas fa-check-circle"></i> Integration with existing systems</li>
+                    <li><i class="fas fa-check-circle"></i> Mobile-friendly and remote access</li>
+                </ul>
+                <a href="contact.html" class="cta-btn">Build Your Custom Solution</a>
+            </div>
+        </div>
+        
+        <div class="service-detail" id="performance-marketing">
+            <div class="service-detail-image">
+                <img src="images/landing1.jpg" alt="Performance Marketing">
+            </div>
+            <div class="service-detail-content">
+                <h3>Performance Marketing & Landing Page Optimization</h3>
+                <p>Maximize your marketing ROI with data-driven strategies and high-converting digital experiences. We combine creative excellence with analytical rigor to drive measurable results.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Conversion-focused landing page design</li>
+                    <li><i class="fas fa-check-circle"></i> A/B testing and conversion rate optimization</li>
+                    <li><i class="fas fa-check-circle"></i> Paid media strategy and management</li>
+                    <li><i class="fas fa-check-circle"></i> Marketing automation implementation</li>
+                    <li><i class="fas fa-check-circle"></i> Analytics and performance tracking</li>
+                </ul>
+                <a href="contact.html" class="cta-btn">Boost Your Conversions</a>
+            </div>
+        </div>
+        
+        <div class="service-detail"  id="ecommerce">
+            <div class="service-detail-image">
+                <img src="images/ecommerce.webp" alt="E-Commerce Solutions">
+            </div>
+            <div class="service-detail-content">
+                <h3>E-Commerce Ecosystem Development</h3>
+                <p>Build a complete digital commerce solution that drives sales and customer loyalty. Our e-commerce solutions are engineered for performance, scalability, and exceptional user experiences.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Custom e-commerce platform development</li>
+                    <li><i class="fas fa-check-circle"></i> Payment gateway integration</li>
+                    <li><i class="fas fa-check-circle"></i> Inventory and order management</li>
+                    <li><i class="fas fa-check-circle"></i> Personalized shopping experiences</li>
+                    <li><i class="fas fa-check-circle"></i> Omnichannel commerce solutions</li>
+                </ul>
+                <a href="contact.html" class="cta-btn">Launch Your Store</a>
+            </div>
+        </div>
+        
+        <div class="service-detail" id="ai-consulting">
+            <div class="service-detail-image">
+                <img src="images/ai2.avif" alt="AI Consulting">
+            </div>
+            <div class="service-detail-content">
+                <h3>AI Consulting & Integration</h3>
+                <p>Unlock the power of artificial intelligence with strategic guidance and practical implementation. We help you identify high-impact AI opportunities and deploy solutions that deliver real business value.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> AI strategy and roadmap development</li>
+                    <li><i class="fas fa-check-circle"></i> Machine learning model development</li>
+                    <li><i class="fas fa-check-circle"></i> Data pipeline and infrastructure</li>
+                    <li><i class="fas fa-check-circle"></i> Computer vision and NLP solutions</li>
+                    <li><i class="fas fa-check-circle"></i> Ongoing model training and refinement</li>
+                </ul>
+                <a href="contact.html" class="cta-btn">Explore AI Possibilities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE BENEFITS SECTION -->
+    <section class="service-benefits">
+        <div class="section-header">
+            <h2>Why Choose Our Services</h2>
+            <p>We deliver more than just technology solutions - we create partnerships that drive lasting success</p>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Proven Expertise</h3>
+                <p>Our team brings decades of combined experience delivering successful technology solutions across industries.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Innovative Approach</h3>
+                <p>We combine cutting-edge technologies with creative problem-solving to deliver unique solutions.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Partnership Focus</h3>
+                <p>We work as an extension of your team, aligning our success with your business outcomes.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Results-Driven</h3>
+                <p>Every solution is designed with measurable KPIs and clear ROI in mind.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="service-cta">
+        <div class="service-cta-content">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's discuss how our technology services can help you achieve your goals and drive meaningful growth.</p>
+            <a href="contact.html" class="light-btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="logo.jpg" alt="Korzyn Logo">
+                    <div class="footer-logo-text">Korzyn</div>
+                </div>
+                <p>We help businesses transform through innovative technology solutions and strategic consulting services.</p>
+                <!-- <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div> -->
+            </div>
+            <div class="footer-links-container">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-container">
+                <h3 class="footer-heading">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html#saas-development">SaaS Development</a></li>
+                    <li><a href="services.html#ai-automation">AI Automation</a></li>
+                    <li><a href="services.html#crm-solutions">CRM Solutions</a></li>
+                    <li><a href="services.html#performance-marketing">Performance Marketing</a></li>
+                    <li><a href="services.html#ecommerce">E-Commerce</a></li>
+                    <li><a href="services.html#ai-consulting">AI Consulting</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 class="footer-heading">Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Malavagoppa,Shivamogga,577222</p>
+                <p><i class="fas fa-phone-alt"></i> +91-8830334279 / +91-9686507616 </p>
+                <p><i class="fas fa-envelope"></i>info@korzyn.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Korzyn Consulting Pvt. Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    // HAMBURGER MENU TOGGLE
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // SET ACTIVE LINK FOR SERVICES PAGE ONLY
+    document.addEventListener('DOMContentLoaded', function () {
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        navItems.forEach(item => {
+            const itemPath = item.getAttribute('href').toLowerCase();
+
+            // Only highlight services link
+            if (itemPath === 'services.html') {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    });
+
+    // SCROLL ANIMATIONS FOR SERVICE SECTIONS
+    const animateOnScroll = () => {
+        const serviceDetails = document.querySelectorAll('.service-detail');
+        const benefitCards = document.querySelectorAll('.benefit-card');
+
+        serviceDetails.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+
+            if (elementPosition < screenPosition) {
+                element.classList.add('visible');
+            }
+        });
+
+        benefitCards.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+
+            if (elementPosition < screenPosition) {
+                element.classList.add('visible');
+            }
+        });
+    };
+
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
+
+    // SMOOTH SCROLLING FOR ANCHOR LINKS
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100, // adjust if header is fixed
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
